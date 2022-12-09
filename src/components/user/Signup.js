@@ -24,7 +24,7 @@ const Signup = () => {
 
   useEffect(() => {
     setIsFormValid(checkForm);
-  });
+  },[checkForm]);
  
   const handleChange = (e) => {
     e.preventDefault();
