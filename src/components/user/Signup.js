@@ -13,6 +13,8 @@ const Signup = () => {
   const [signup, setSingup] = useState(initialFormState);
   const [formIsValid, setIsFormValid] = useState(false);
 
+
+  // Password must contain at least 8 characters one number and one special character
   const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
   const checkForm =
     signup.email.includes("@") &&
