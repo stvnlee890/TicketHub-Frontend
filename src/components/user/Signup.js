@@ -13,17 +13,17 @@ const Signup = () => {
   const [signup, setSingup] = useState(initialFormState);
   const [formIsValid, setIsFormValid] = useState(false);
 
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
   const checkForm =
     signup.email.includes("@") &&
-    signup.password.trim().length >= 6 &&
+    regex.test(signup.password) &&
     signup.firstName !== "" &&
     signup.lastName !== "";
 
   useEffect(() => {
     setIsFormValid(checkForm);
   });
-  console.log(checkForm);
-
+ 
   const handleChange = (e) => {
     e.preventDefault();
     setSingup({ ...signup, [e.target.id]: e.target.value });
@@ -33,6 +33,7 @@ const Signup = () => {
     e.preventDefault();
     UserSignup(signup).then((res) => {
       if (res.status === 200) navigate("/login");
+      else if(res.code === 11000) alert("Email already in use")
     });
   };
   return (
@@ -64,12 +65,12 @@ const Signup = () => {
           value={signup.password}
         ></input>
         {formIsValid ? (
-            <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
         ) : (
-            <button disabled type="submit">Submit</button>
-        )
-        }
-
+          <button disabled type="submit">
+            Submit
+          </button>
+        )}
       </form>
     </div>
   );
