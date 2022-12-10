@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const Nav = () => {
+    const loggedIn = useSelector((state) => state)
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
