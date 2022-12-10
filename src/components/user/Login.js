@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../../api/HttpRequest";
+import { checkLoggedIn } from "../../store/LoggedInSlice";
 
 const Login = () => {
     const navigate = useNavigate()
