@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../../api/HttpRequest";
-import { checkLoggedIn } from "../../store/LoggedInSlice";
+import { useDispatch } from "react-redux";
+import { setLoggedIn } from "../../features/isLoggedIn/loginSlice";
 
 const Login = () => {
-    const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
   const initialFormState = {
     email: "",
     password: "",
@@ -19,14 +21,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     UserLogin(login).then((res) => {
-        console.log(res)
+      console.log(res);
       if (res.status === 200) {
         window.localStorage.setItem("token", res.token);
         window.localStorage.setItem("isLoggedIn", true);
-        navigate("/")
-      } else if(res.statusCode === 422){
-        alert('email or password is incorrect')
-        setLogin(initialFormState)
+        dispatch(setLoggedIn())
+        navigate("/");
+      } else if (res.statusCode === 422) {
+        alert("email or password is incorrect");
+        setLogin(initialFormState);
       }
     });
   };
