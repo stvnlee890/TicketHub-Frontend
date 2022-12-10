@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setLogOut } from "../../features/isLoggedIn/loginSlice";
 
 const Logout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("isLoggedIn")
-    return(
-        <div>Logout successful</div>
-    )
-}
-export default Logout
+  const dispatch = useDispatch();
+  window.localStorage.removeItem("token");
+  window.localStorage.removeItem("isLoggedIn");
+  useEffect(() => {
+    dispatch(setLogOut());
+  },[]);
+  return <div>Logout successful</div>;
+};
+export default Logout;
