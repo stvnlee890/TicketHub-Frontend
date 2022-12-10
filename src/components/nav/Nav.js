@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
-    const loggedIn = useSelector((state) => state)
+  const loggedIn = useSelector((store) => store.loggedIn.isLoggedIn);
+  console.log(loggedIn);
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/signup">Sign Up</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/logout">Logout</NavLink>
+      {!loggedIn && <NavLink to="/signup">Sign Up</NavLink>}
+      {!loggedIn && <NavLink to="/login">Login</NavLink>}
+      {loggedIn && <NavLink to="/logout">Logout</NavLink>}
     </nav>
   );
 };
