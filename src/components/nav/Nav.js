@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Nav = () => {
+  // our store is provided to Nav component through useSelector
+  // this is the state (in this case store) needed in order to handle
+  // logic based on the change of state.
   const loggedIn = useSelector((store) => store.loggedIn.isLoggedIn);
   console.log(loggedIn);
   return (
