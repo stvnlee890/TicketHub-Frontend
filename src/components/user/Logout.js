@@ -4,8 +4,8 @@ import { setLogOut } from "../../features/isLoggedIn/loginSlice";
 
 const Logout = () => {
   const dispatch = useDispatch();
-  window.localStorage.removeItem("token");
-  window.localStorage.removeItem("isLoggedIn");
+//   window.localStorage.removeItem("token");
+//   window.localStorage.removeItem("isLoggedIn");
   useEffect(() => {
     dispatch(setLogOut());
   },[]);

@@ -23,8 +23,8 @@ const Login = () => {
     UserLogin(login).then((res) => {
       console.log(res);
       if (res.status === 200) {
-        window.localStorage.setItem("token", res.token);
-        window.localStorage.setItem("isLoggedIn", true);
+        // window.localStorage.setItem("token", res.token);
+        // window.localStorage.setItem("isLoggedIn", true);
         dispatch(setLoggedIn())
         navigate("/");
       } else if (res.statusCode === 422) {
