@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // think of slice as a feature of an app
 
 const initialState = {
-  isLoggedIn: window.localStorage.getItem('isLoggedIn'),
+  isLoggedIn: false,
 };
 
 const loginSlice = createSlice({
