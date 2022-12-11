@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthProvider";
 import { UserLogin } from "../../api/HttpRequest";
-import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../features/isLoggedIn/loginSlice";
 
 const Login = () => {
-  const dispatch = useDispatch()
+  const context = useContext(AuthContext)
   const navigate = useNavigate();
   const initialFormState = {
     email: "",
@@ -21,14 +20,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     UserLogin(login).then((res) => {
-      console.log(res);
       if (res.status === 200) {
-        window.localStorage.setItem("token", res.token);
-        window.localStorage.setItem("isLoggedIn", true);
-
-        // dispatch function allows us to pass the reducer function we built in the slice file
-        // so that our store knows what reducer state to update. 
-        dispatch(setLoggedIn())
+        context.handleLogin(res.token)
         navigate("/");
       } else if (res.statusCode === 422) {
         alert("email or password is incorrect");
