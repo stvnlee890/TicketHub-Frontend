@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 // think of slice as a feature of an app
+
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: window.localStorage.getItem('isLoggedIn'),
 };
+
 const loginSlice = createSlice({
   // create slice requires a name, state, reducers property
   name: "isLoggedIn",
@@ -14,7 +16,9 @@ const loginSlice = createSlice({
     // immer detects changes to a "draft state" and produces a
     // brand new immutable state based off those changes
     setLoggedIn: (state) => {
-      state.isLoggedIn = true;
+      console.log(state.isLoggedIn)
+      state.isLoggedIn = window.localStorage.getItem('user');
+      console.log(state.isLoggedIn)
       //   else state.isLoggedIn = false
     },
     setLogOut: (state) => {

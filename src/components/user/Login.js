@@ -23,9 +23,10 @@ const Login = () => {
     UserLogin(login).then((res) => {
       console.log(res);
       if (res.status === 200) {
-        // window.localStorage.setItem("token", res.token);
-        // window.localStorage.setItem("isLoggedIn", true);
-        // dispatch function allows us to pass the reducer function we built in the slice file.
+        window.localStorage.setItem("token", res.token);
+        window.localStorage.setItem("isLoggedIn", true);
+
+        // dispatch function allows us to pass the reducer function we built in the slice file
         // so that our store knows what reducer state to update. 
         dispatch(setLoggedIn())
         navigate("/");
