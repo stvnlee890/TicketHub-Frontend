@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   const context = useContext(AuthContext)
-  console.log(context.isLoggedIn)
+
   return (
     <nav>
       <NavLink to="/">Home</NavLink>

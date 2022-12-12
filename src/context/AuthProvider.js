@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const AuthContext = React.createContext({
   // initial value of context
   isLoggedIn: false,
-  // setisloggedin for better IDE completion
+  // name the used functions for better ide completion on providers
   setIsLoggedIn: () => {},
   handleLogin: (token) => {},
   handleLogout: () => {},

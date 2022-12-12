@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import AuthContext from "./context/AuthProvider";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Nav from "./components/nav/Nav";
@@ -8,7 +7,6 @@ import Logout from "./components/user/Logout";
 import Signup from "./components/user/Signup";
 
 function App() {
-
 
   return (
     <div className="App">
