@@ -1,10 +1,15 @@
 import React, { useEffect, useContext } from "react";
-import AuthContext from "../../context/AuthProvider"
+import { useDispatch } from "react-redux";
+import { setLogOut } from "../../features/isLoggedIn/loginSlice";
+
 
 const Logout = () => {
-  const context = useContext(AuthContext)
+  const dispatch = useDispatch()
   useEffect(() => {
-    context.handleLogout()
+    dispatch(setLogOut({
+      token: null,
+      isLoggedIn: false,
+    }))
   }, []);
 
   return <div>Logout successful</div>;
