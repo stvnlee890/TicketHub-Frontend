@@ -12,7 +12,7 @@ const Concerts = ({ concert }) => {
         <p>{concert.artistName}</p>
         <p>{concert.venue}</p>
         <p>{concert.tourDates}</p>
-        <button id={concert.concertId} onClick={handleClick}>Learn More</button>
+        <button id={concert._id} onClick={handleClick}>Learn More</button>
     </div>
   );
 };
