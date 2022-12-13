@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Nav = () => {
-  const isLoggedIn = useSelector((state) => state.reducer.userLogIn.isLoggedIn.payload.isLoggedIn)
+  const isLoggedIn = useSelector((state) => state.reducer.userHandle.isLoggedIn.payload.isLoggedIn)
+ 
   // const isLoggedIn = useSelector((state) => console.log(state))
-  // console.log(isLoggedIn)
+  console.log(isLoggedIn)
 
   return (
     <nav>
