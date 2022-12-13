@@ -37,3 +37,16 @@ export const GetConcerts = async() => {
     console.log(error)
   }
 };
+
+// ===================
+// Ticket Details
+// ===================
+
+export const GetTicketDetails = async (concertId) => {
+  try {
+    const res = await axios.get(`${baseUrl}/tickets/ticketDetails/${concertId}`)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
