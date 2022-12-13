@@ -1,13 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../context/AuthProvider";
 import { UserLogin } from "../../api/HttpRequest";
 import { useDispatch } from "react-redux";
 import { setLoggedIn } from "../../features/isLoggedIn/loginSlice";
 
 const Login = () => {
   const dispatch = useDispatch()
-  const context = useContext(AuthContext)
   const navigate = useNavigate();
   const initialFormState = {
     email: "",
@@ -28,7 +26,6 @@ const Login = () => {
           token: res.token,
           isLoggedIn: true,
         }))
-        // context.handleLogin(res.token)
         navigate("/");
       } else if (res.statusCode === 422) {
         alert("email or password is incorrect");
